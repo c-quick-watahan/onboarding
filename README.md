@@ -247,13 +247,13 @@ C:\dev\
 cd C:\dev\Docker-order-shunostyle
 
 # Start Docker containers
-docker-compose up -d
+docker compose up -d
 
 # Navigate to frontend code
 cd src
 
 # Install dependencies (first time only)
-docker-compose exec app composer install
+docker compose exec app composer install
 
 # Open in VSCode
 code .
