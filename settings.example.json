@@ -1,0 +1,16 @@
+{
+  "distro": "Ubuntu-24.04",
+  "devDir": "C:\\dev",
+  "gitCreds": {
+    "name": "YOUR_NAME_HERE",
+    "email": "YOUR_EMAIL_HERE"
+  },
+  "vsCodeExtensions": ["eamodio.gitlens", "esbenp.prettier-vscode"],
+  "projects": [
+    {
+      "name": "example-project",
+      "multiRepo": false,
+      "unifiedRepo": "https://github.com/your-org/your-repo.git"
+    }
+  ]
+}

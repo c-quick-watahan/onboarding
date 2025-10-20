@@ -1,0 +1,37 @@
+{
+  "winget": {
+    "cmd": ["winget --version"],
+    "stepSuccess": false
+  },
+  "wslInstall": {
+    "stepSuccess": false,
+    "requiresReboot": false
+  },
+  "git": {
+    "wingetCmd": "winget install --id Git.Git -e --source winget",
+    "wingetSuccess": false,
+    "stepSuccess": false
+  },
+  "docker": {
+    "wingetCmd": "winget install -e --id Docker.DockerDesktop",
+    "wingetSuccess": false,
+    "stepSuccess": false,
+    "manualSteps": [
+      "1. Open Start Menu and search for Docker Desktop",
+      "2. Launch Docker Desktop",
+      "3. Accept the service agreement",
+      "4. Wait for Docker to start (whale icon in system tray)",
+      "5. Verify WSL2 backend is enabled in Settings -\u003e General"
+    ]
+  },
+  "vsCode": {
+    "wingetCmd": "winget install -e --id Microsoft.VisualStudioCode",
+    "wingetSuccess": false,
+    "stepSuccess": false
+  },
+  "githubCLI": {
+    "wingetCmd": "winget install --id GitHub.cli",
+    "wingetSuccess": false,
+    "stepSuccess": false
+  }
+}
