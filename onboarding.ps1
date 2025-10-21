@@ -110,14 +110,17 @@ foreach ($step in $manifestData.PSObject.Properties) {
                 
                 foreach ($project in $settingsData.projects) {
                     Write-Host "`nProject: $($project.name)" -ForegroundColor Yellow
-                    
                     if ($project.multiRepo -eq $true) {
                         # Clone backend repo
                         $backendPath = "$($settingsData.devDir)\$($project.backendName)"
                         
                         if (!(Test-Path $backendPath)) {
                             Write-Host "Cloning backend to: $backendPath" -ForegroundColor Blue
-                            Invoke-Expression "gh repo clone $($project.backendRepo) `"$backendPath`""
+                            # Invoke-Expression "gh repo clone $($project.backendRepo) `"$backendPath`""
+							& gh repo clone $project.backendRepo $backendPath
+							if ($LASTEXITCODE -ne 0) {
+    							throw "Failed to clone backend repo"
+							}
                         } else {
                             Write-Host "Backend already exists at: $backendPath" -ForegroundColor Gray
                         }
@@ -127,7 +130,11 @@ foreach ($step in $manifestData.PSObject.Properties) {
                         
                         if (!(Test-Path $frontendPath)) {
                             Write-Host "Cloning frontend to: $frontendPath" -ForegroundColor Blue
-                            Invoke-Expression "gh repo clone $($project.frontendRepo) `"$frontendPath`""
+                            # Invoke-Expression "gh repo clone $($project.frontendRepo) `"$frontendPath`""
+							& gh repo clone $project.frontendRepo $frontendPath
+							if ($LASTEXITCODE -ne 0) {
+    							throw "Failed to clone frontend repo"
+							}
                         } else {
                             Write-Host "Frontend already exists at: $frontendPath" -ForegroundColor Gray
                         }
@@ -138,7 +145,11 @@ foreach ($step in $manifestData.PSObject.Properties) {
                         
                         if (!(Test-Path $path)) {
                             Write-Host "Cloning repo to: $path" -ForegroundColor Blue
-                            Invoke-Expression "gh repo clone $($project.unifiedRepo) `"$path`""
+                            # Invoke-Expression "gh repo clone $($project.unifiedRepo) `"$path`""
+							gh repo clone $project.unifiedRepo $path
+							if ($LASTEXITCODE -ne 0) {
+    							throw "Failed to clone the unified repo"
+							}
                         } else {
                             Write-Host "Repo already exists at: $path" -ForegroundColor Gray
                         }
