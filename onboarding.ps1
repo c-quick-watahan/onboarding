@@ -1,4 +1,4 @@
-$manifestContent = Get-Content -Path "manifest1.json" -Raw -Encoding UTF8
+$manifestContent = Get-Content -Path "manifest.json" -Raw -Encoding UTF8
 $manifestData = ConvertFrom-Json -InputObject $manifestContent
 $settingsContent = Get-Content -Path "settings.json" -Raw -Encoding UTF8
 $settingsData = ConvertFrom-Json -InputObject $settingsContent
@@ -174,6 +174,6 @@ foreach ($step in $manifestData.PSObject.Properties) {
 			exit 1
 		}
 		finally {
-			$manifestData | ConvertTo-Json -Depth 10 | Set-Content manifest1.json
+			$manifestData | ConvertTo-Json -Depth 10 | Set-Content manifest.json
 		}
 }
